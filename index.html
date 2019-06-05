@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Portals Warehouse</title>
+
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item
+          id="warehouse"
+          src="res/warehouse/scene.gltf"
+        ></a-asset-item>
+        <img src="res/statues.JPG" id="statues" />
+        <img src="res/4d.JPG" id="4d" />
+        <img src="res/playGround.JPG" id="ground" />
+      </a-assets>
+
+      <a-sky src="./res/daySky.png"></a-sky>
+
+      <a-entity light="type: ambient; color: #000"></a-entity>
+
+      <a-entity
+        light="type: directional; color: #FFFFFF; intensity: 0.6; castShadow: true"
+        position="-0.5 1 1"
+      ></a-entity>
+
+      <a-entity
+        light="type: point; intensity: 0.8; distance: 10; castShadow: true"
+        position="0 3 -8"
+      ></a-entity>
+
+      <a-text
+        value="Do Not Enter The Portals"
+        position="0 3 -10"
+        align="center"
+      ></a-text>
+
+      <a-entity position="-4 1.6 -14" rotation="0 30 0">
+        <a-animation
+          attribute="position"
+          from="-4 1.6 -14"
+          to="-4 1.8 -14"
+          repeat="indefinite"
+          direction="alternate"
+          dur="3000"
+          easing="ease-in-out"
+        ></a-animation>
+        <a-link
+          href="statues.html"
+          title="Haunted Statues"
+          on="click"
+          image="#statues"
+          backgroundColor="white"
+          borderColor="black"
+        ></a-link>
+      </a-entity>
+
+      <a-entity position="0 1.6 -15">
+        <a-animation
+          attribute="position"
+          from="0 1.75 -14"
+          to="0 1.55 -14"
+          repeat="indefinite"
+          direction="alternate"
+          dur="3150"
+          easing="ease-in-out"
+        ></a-animation>
+        <a-link
+          href="4d.html"
+          title="4th Dimension"
+          on="click"
+          image="#4d"
+          backgroundColor="white"
+          borderColor="black"
+        ></a-link>
+      </a-entity>
+
+      <a-entity position="4 1.6 -14" rotation="0 -30 0">
+        <a-animation
+          attribute="position"
+          from="4 1.65 -14"
+          to="4 1.8 -14"
+          repeat="indefinite"
+          direction="alternate"
+          dur="3300"
+          easing="ease-in-out"
+        ></a-animation>
+        <a-link
+          href="ground.html"
+          title="Play Ground"
+          on="click"
+          image="#ground"
+          backgroundColor="white"
+          borderColor="black"
+        ></a-link>
+      </a-entity>
+
+      <a-entity
+        position="7 3.4 -7"
+        rotation="0 90 0"
+        scale="4 4 4"
+        gltf-model="#warehouse"
+        modify-materials
+      ></a-entity>
+
+      <a-entity>
+        <a-camera>
+          <a-cursor color="#FF0000"></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+
+    <script>
+      var box = document.getElementById("box");
+
+      box.addEventListener("mouseenter", function() {
+        box.setAttribute("animation", { enabled: true });
+      });
+    </script>
+  </body>
+</html>

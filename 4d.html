@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>4th Dimension</title>
+
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img src="res/warehouse.JPG" id="warehouse" />
+        <img src="res/brickWall.jpg" id="bricks" />
+        <img src="res/brickWall-normal.jpg" id="bricks-normal" />
+        <img src="res/nightSky.jpg" id="nightSky" />
+        <a-asset-item id="statue" src="res/statue/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-sky src="#nightSky"></a-sky>
+
+      <a-box
+        material="
+            color: #ffffff;
+            src: #bricks;
+            repeat: 4 4;
+            normal-map: #bricks-normal;
+            normal-texture-repeat: 4 4;
+            normal-scale: 1 -1;
+            roughness: 0.5;"
+        width="1"
+        height="1"
+        depth="1"
+        position="0 1.6 -10"
+        shadow="cast: true"
+        scale="8 8 -8"
+      ></a-box>
+
+      <a-entity position="0 1.6 -10" shadow="cast: true">
+        <a-animation
+          attribute="position"
+          from="0 1.75 -10"
+          to="0 1.55 -10"
+          repeat="indefinite"
+          direction="alternate"
+          dur="3150"
+          easing="ease-in-out"
+        ></a-animation>
+        <a-link
+          href="index.html"
+          title="Back to Warehouse"
+          on="click"
+          image="#warehouse"
+          backgroundColor="white"
+          borderColor="black"
+        ></a-link>
+      </a-entity>
+
+      <a-entity>
+        <a-camera>
+          <a-cursor color="#FF0000"></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Play Ground</title>
+
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img src="res/warehouse.JPG" id="warehouse" />
+        <img src="res/ground.jpg" id="ground" />
+        <img src="res/ground-normal.jpg" id="ground-normal" />
+        <img src="res/daySky.png" id="daySky" />
+      </a-assets>
+
+      <a-sky src="#daySky" rotation="0 40 0"></a-sky>
+
+      <a-plane
+        material="
+            color: #ffffff;
+            src: #ground;
+            repeat: 500 500;
+            normal-map: #ground-normal;
+            normal-texture-repeat: 500 500;"
+        rotation="-90 0 0"
+        scale="1000 1000 1"
+        shadow="cast: true"
+      ></a-plane>
+
+      <a-box
+        id="box"
+        color="#318ed6"
+        width="1"
+        height="1"
+        depth="1"
+        position="-3 1.6 -5"
+      ></a-box>
+
+      <a-sphere
+        id="sphere"
+        color="#e0b721"
+        radius="0.5"
+        position="-3 1.6 -8"
+      ></a-sphere>
+
+      <a-cylinder
+        id="cylinder"
+        color="#e02121"
+        width="1"
+        height="1"
+        depth="1"
+        radius="0.5"
+        position="-3 1.6 -2"
+      ></a-cylinder>
+
+      <a-entity position="0 1.6 -15" shadow="cast: true">
+        <a-animation
+          attribute="position"
+          from="0 1.75 -14"
+          to="0 1.55 -14"
+          repeat="indefinite"
+          direction="alternate"
+          dur="3150"
+          easing="ease-in-out"
+        ></a-animation>
+        <a-link
+          href="index.html"
+          title="Back to Warehouse"
+          on="click"
+          image="#warehouse"
+          backgroundColor="white"
+          borderColor="black"
+        ></a-link>
+      </a-entity>
+
+      <a-entity>
+        <a-camera>
+          <a-cursor color="#FF0000"></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+
+    <script>
+      var box = document.getElementById("box");
+      var sphere = document.getElementById("sphere");
+      var cylinder = document.getElementById("cylinder");
+
+      box.addEventListener("mouseenter", function() {
+        box.setAttribute("scale", { x: 2, y: 2, z: 2 });
+      });
+
+      box.addEventListener("mouseleave", function() {
+        box.setAttribute("scale", { x: 1, y: 1, z: 1 });
+      });
+
+      sphere.addEventListener("mouseenter", function() {
+        sphere.setAttribute("color", "#21e03a");
+      });
+
+      sphere.addEventListener("mouseleave", function() {
+        sphere.setAttribute("color", "#e0b721");
+      });
+
+      cylinder.addEventListener("mouseenter", function() {
+        cylinder.setAttribute("rotation", { x: 0, y: 0, z: 45 });
+      });
+
+      cylinder.addEventListener("mouseleave", function() {
+        cylinder.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+      });
+    </script>
+  </body>
+</html>

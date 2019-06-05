@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Haunted Statues</title>
+
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene fog="type: exponential; color: #262626">
+      <a-assets>
+        <img src="res/warehouse.JPG" id="warehouse" />
+        <img src="res/tiles.jpg" id="tiles" />
+        <img src="res/tiles-normal.jpg" id="tiles-normal" />
+        <img src="res/metal.jpg" id="metal" />
+        <img src="res/metal-normal.jpg" id="metal-normal" />
+        <img src="res/nightSky.jpg" id="nightSky" />
+        <a-asset-item id="statue" src="res/statue/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-entity light="type: ambient; color: #000"></a-entity>
+
+      <a-entity
+        light="type: directional; color: #FFFFFF; intensity: 0.6; castShadow: true"
+        position="-0.5 1 1"
+      ></a-entity>
+
+      <a-entity
+        light="type: point; intensity: 0.8; distance: 10; castShadow: true"
+        position="0 3 -8"
+      ></a-entity>
+
+      <a-sky src="#nightSky"></a-sky>
+
+      <a-plane
+        material="
+            color: #ffffff;
+            src: #tiles;
+            repeat: 500 500;
+            normal-map: #tiles-normal;
+            normal-texture-repeat: 500 500;"
+        rotation="-90 0 0"
+        scale="1000 1000 1"
+        shadow="cast: true"
+      ></a-plane>
+
+      <a-box
+        material="
+            color: #ffffff;
+            src: #metal;
+            repeat: 1 1;
+            normal-map: #metal-normal;
+            normal-texture-repeat: 1 1;
+            normal-scale: 1 -1;
+            roughness: 0.5;"
+        width="1"
+        height="1"
+        depth="1"
+        position="0 1.6 -8"
+        shadow="cast: true"
+        ><a-animation
+          attribute="rotation"
+          to="0 360 0"
+          repeat="indefinite"
+          dur="5000"
+          easing="linear"
+        ></a-animation>
+      </a-box>
+
+      <a-entity
+        position="4 3.4 -8"
+        rotation="0 0 0"
+        scale="1 1 1"
+        gltf-model="#statue"
+        shadow="cast: true"
+        modify-materials
+      ></a-entity>
+
+      <a-entity
+        position="-4 3.4 -8"
+        rotation="0 0 0"
+        scale="1 1 1"
+        gltf-model="#statue"
+        shadow="cast: true"
+        modify-materials
+      ></a-entity>
+
+      <a-entity position="0 1.6 -15" shadow="cast: true">
+        <a-animation
+          attribute="position"
+          from="0 1.75 -14"
+          to="0 1.55 -14"
+          repeat="indefinite"
+          direction="alternate"
+          dur="3150"
+          easing="ease-in-out"
+        ></a-animation>
+        <a-link
+          href="index.html"
+          title="Back to Warehouse"
+          on="click"
+          image="#warehouse"
+          backgroundColor="white"
+          borderColor="black"
+        ></a-link>
+      </a-entity>
+
+      <a-entity>
+        <a-camera>
+          <a-cursor color="#FF0000"></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
